@@ -1,0 +1,232 @@
+body {
+    font-family: 'Segoe UI', 'Malgun Gothic', Arial, sans-serif;
+    background: var(--bg, #f5f6fa);
+    color: var(--text, #222);
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --bg: #f5f6fa;
+    --text: #222;
+    --box: #fff;
+    --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    --header: #f0f4fa;
+    --accent: #2d8cf0;
+    --holiday: #ffb3b3;
+    --holiday-text: #b20000;
+    --today: #ffe066;
+    --today-border: #ff9900;
+    --sat-sun: #d60000;
+}
+body.dark-mode {
+    --bg: #23272f;
+    --text: #e6e9f0;
+    --box: #23272f;
+    --shadow: 0 2px 16px rgba(0,0,0,0.32);
+    --header: #2c313a;
+    --accent: #6bb8ff;
+    --holiday: #a32f2f;
+    --holiday-text: #fff;
+    --today: #5c4e1a;
+    --today-border: #ffe066;
+    --sat-sun: #ff6b6b;
+}
+
+body.dark-mode .calendar-table th,
+body.dark-mode .calendar-table td {
+    color: #fff !important;
+}
+body.dark-mode .calendar-table td span.holiday-name {
+    color: #fff !important;
+}
+
+.calendar-app {
+    max-width: 750px;
+    margin: 48px auto;
+    background: var(--box);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 23px 32px 31px 32px;
+} 
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.header-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+.header-row h1 {
+    flex: 2 1 0;
+    text-align: center;
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    color: var(--text);
+    min-width: 140px;
+}
+.header-row .year-month {
+    min-width: 82px;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 6px;
+    text-align: center;
+}
+.header-row .month-nav {
+    font-size: 1.2em;
+    background: #e6e9f0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: var(--text);
+    margin: 0 2px;
+}
+body.dark-mode .header-row .month-nav {
+    background: #2c313a;
+    color: #e6e9f0;
+}
+.header-row #darkmode-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    background: #e6e9f0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+body.dark-mode .header-row #darkmode-toggle {
+    background: #2c313a;
+    color: #e6e9f0;
+}
+
+.holiday-remaining {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.work-mode {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.work-mode button {
+    border: none;
+    background: #e6e9f0;
+    color: #222;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+body.dark-mode .work-mode button {
+    background: #2c313a;
+    color: #e6e9f0;
+}
+.work-mode button.active, .work-mode button:hover {
+    background: var(--accent);
+    color: #fff;
+}
+#calendar {
+    margin-top: 12px;
+}
+.calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+.calendar-table th, .calendar-table td {
+    width: 14.285%;
+    text-align: center;
+    padding: 15px 0 10px 0;
+    border-radius: 14px;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+} 
+.calendar-nav-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0 4px 0;
+}
+.calendar-nav-row .month-nav {
+    font-size: 1.2em;
+    background: #e6e9f0;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: var(--text);
+    margin: 0 2px;
+}
+body.dark-mode .calendar-nav-row .month-nav {
+    background: #2c313a;
+    color: #e6e9f0;
+}
+.calendar-nav-row .year-month {
+    min-width: 82px;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: center;
+}
+.calendar-table th {
+    color: var(--accent);
+    font-weight: 600;
+    background: var(--header);
+}
+.calendar-table th.sun, .calendar-table th.sat {
+    color: var(--sat-sun);
+}
+
+.calendar-table td {
+    background: var(--box);
+    transition: background 0.2s;
+}
+.calendar-table td.today {
+    background: var(--today);
+    font-weight: bold;
+    border: 2px solid var(--today-border);
+    box-shadow: 0 0 0 2px var(--box) inset;
+    color: var(--text);
+}
+.calendar-table td.holiday {
+    background: var(--holiday);
+    color: var(--holiday-text);
+    font-weight: bold;
+}
+.calendar-table td.sun, .calendar-table td.sat {
+    color: var(--sat-sun);
+    font-weight: bold;
+}
+.calendar-table td.past {
+    color: #bbb;
+}
+.calendar-table td.future {
+    color: #222;
+}
+.calendar-table td span.holiday-name {
+    display: block;
+    font-size: 0.5em;
+    margin-top: 6px;
+    color: #b20000;
+    font-weight: 500;
+    line-height: 1.2;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 한국 휴일 달력</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendar-app">
+        <header>
+            <div class="header-row">
+                <h1>2025 휴일 달력</h1>
+                <button id="darkmode-toggle" title="다크모드">🌙</button>
+            </div>
+            <div class="holiday-remaining">
+                남은 휴일: <span id="holidays-left">0</span>일
+            </div>
+            <div class="work-mode">
+                <button data-mode="5" class="active">주5일제</button>
+                <button data-mode="6">주6일제</button>
+                <button data-mode="free">평일 쉼</button>
+            </div>
+        </header>
+        <main>
+            <div id="calendar"></div>
+        </main>
+    </div>
+    <script src="calendar.js"></script>
+</body>
+</html>
